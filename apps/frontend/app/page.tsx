@@ -1,6 +1,9 @@
 import JoinWaitlist from "@/components/join-waitlist";
-import Image from "next/image";
 
 export default function Home() {
-  return <JoinWaitlist />;
+  return (
+    <div className="flex items-center">
+      <JoinWaitlist />
+    </div>
+  );
 }
