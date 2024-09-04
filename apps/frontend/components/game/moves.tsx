@@ -3,13 +3,16 @@ import { Button } from "../ui/button";
 
 export function Moves() {
   return (
-    <div className="flex space-x-2">
-      {Images.map((p, index) => (
-        <MovesButton key={index}>
-          <p className="font-bold">{p.name}</p>
-          <Image src={p.svg} width={40} height={40} alt={p.name}></Image>
-        </MovesButton>
-      ))}
+    <div>
+      <div className="flex space-x-2">
+        {Images.map((p, index) => (
+          <MovesButton key={index}>
+            <p className="font-bold">{p.name}</p>
+            <Image src={p.svg} width={40} height={40} alt={p.name}></Image>
+          </MovesButton>
+        ))}
+      </div>
+      <p className="font-thin p-2"> Select your Move</p>
     </div>
   );
 }
