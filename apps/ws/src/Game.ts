@@ -38,7 +38,23 @@ export class Game{
         if(this.player1Move && this.player2Move){
             this.round = this.round + 1;
             // Update the score of player who wins
-            if (
+
+            // If the move are same , make this round draw
+            if(this.player1Move === this.player2Move){
+                this.player1.send(
+                    JSON.stringify({
+                        type: Messages.ROUND_DRAW,
+                        message: "Round Draw"
+                    })
+                )
+                this.player2.send(
+                    JSON.stringify({
+                        type: Messages.ROUND_DRAW,
+                        message: "Round Draw"
+                    })
+                )
+            }
+            else if (
                 (this.player1Move === 'rock' && this.player2Move === 'scissors') ||
                 (this.player1Move === 'scissors' && this.player2Move === 'paper') ||
                 (this.player1Move === 'paper' && this.player2Move === 'rock')
@@ -80,8 +96,22 @@ export class Game{
                 // mark the game as finished
                 this.isCompleted = true;
             }
+            else if(this.round === 3 && this.player1Points === this.player2Points){
+                this.player2.send(
+                    JSON.stringify({
+                    type: Messages.DRAW,
+                    message: "Game Draw"
+                }));
+                this.player1.send(
+                    JSON.stringify({
+                    type: Messages.DRAW,
+                    message: "Game Draw"
+                }));
+                // mark the game as finished
+                this.isCompleted = true;
+            }
             else {
-                // Send score to the players for first two rounds
+                // Send the score to the players for first round and second round
                 this.player1.send(
                     JSON.stringify({
                     type: Messages.SCORE,
