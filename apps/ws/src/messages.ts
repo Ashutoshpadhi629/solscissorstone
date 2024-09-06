@@ -5,5 +5,7 @@ export const Messages = {
     FINDING_GAME: "FINDING_GAME",
     LOSE: "LOSE",
     WIN: "WIN",
+    DRAW: "DRAW",
     SCORE: "SCORE",
+    ROUND_DRAW: "ROUND_DRAW"
 } as const;
