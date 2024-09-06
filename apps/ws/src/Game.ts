@@ -111,7 +111,7 @@ export class Game{
                 this.isCompleted = true;
             }
             else {
-                // Send score to the players for first round and second round
+                // Send the score to the players for first round and second round
                 this.player1.send(
                     JSON.stringify({
                     type: Messages.SCORE,
